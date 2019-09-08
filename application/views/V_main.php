@@ -8,6 +8,8 @@
 	<p id="gmapJs"><?php echo $map['js']; ?></p>
 	<script>
 		function GetPosition(Result){
+			//เรียกใช้ fnc GetPosition ด้วย Libaries Googlemaps
+			//เพราะ Libaries ไม่ return list location ต้องสร้างเอง
 			var mark=[],lat=[],lng=[];
 			for(var i = 0 ; i<Result.length; i++){
 				// Result[i] = Result[i]['mark']+','+Result[i]['lat']+','+Result[i]['lng'];
@@ -16,6 +18,7 @@
 				lng[i]  = Result[i]['lng'];
 			}
 			// console.log(mark[0]);
+			//ส่งไป Controller เพื่อตกแต่ style แล้วข้อความ
 			var url = "<?php echo base_url()."index.php/C_main/getMaps"; ?>";
 			$.post(url, {mark:mark, lat:lat, lng:lng},
 			function ( data ){
@@ -23,7 +26,8 @@
 			});
 		}
 		function ClickMap(lat,lng){
-			//ทำยังไม่เสร็จสมบูรณ์
+			//Create new map เพื่อจะแสดงแต่ละสถานที่
+			//ทำยังไม่เสร็จ
 			// alert(lat);
 			var url = "<?php echo base_url()."index.php/C_main/GetMapJs"; ?>";
 			$.post(url, {lat:lat, lng:lng},

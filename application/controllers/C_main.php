@@ -10,6 +10,7 @@ class C_main extends CI_Controller {
 
 	public function index()
 	{
+		//บางซื่อ
 		$lat = 13.803344;
 		$lng = 100.539525;
 		// if($this->input->post("location") != ''){
